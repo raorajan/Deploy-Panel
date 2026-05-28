@@ -1,5 +1,5 @@
 const Deployment = require('../models/DeploymentModel');
-const { addToQueue } = require('../worker');
+const { addToQueue } = require('../workers/deployWorker');
 
 /**
  * Create a new deployment

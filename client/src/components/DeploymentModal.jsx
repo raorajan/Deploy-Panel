@@ -56,7 +56,10 @@ export default function DeploymentModal({ id, onClose, onDeleted, initial }) {
 
         <div className="modal-body">
           {loading ? (
-            <div className="modal-loading">Loading...</div>
+            <div className="modal-loading">
+              <div className="modal-spinner" aria-hidden="true"></div>
+              <div className="modal-loading-text">Loading deployment details…</div>
+            </div>
           ) : deployment ? (
             <>
               <div className="summary-grid">

@@ -3,7 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/database');
 const deploymentRoutes = require('./routes/DeploymentRoute');
-const { getQueueStats } = require('./worker');
+const { getQueueStats } = require('./workers/deployWorker');
 
 // Load environment variables
 dotenv.config();
