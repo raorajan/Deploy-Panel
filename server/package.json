@@ -1,21 +1,37 @@
 {
-  "name": "server",
+  "name": "deploypanel-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Deployment Control Panel Backend API with Queue System",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "deployment",
+    "docker",
+    "aws",
+    "lambda",
+    "queue",
+    "bullmq",
+    "redis"
+  ],
+  "author": "Rajan Kumar",
+  "license": "MIT",
   "type": "commonjs",
   "dependencies": {
-    "bullmq": "^5.77.6",
-    "cors": "^2.8.6",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "ioredis": "^5.11.0",
-    "mongoose": "^9.6.3"
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "bullmq": "^4.12.0",
+    "ioredis": "^5.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
   }
 }
