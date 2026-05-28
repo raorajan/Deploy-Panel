@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Form.css';
+import { toast } from 'react-hot-toast';
 
 const Form = ({ onDeploySuccess }) => {
   const [clientName, setClientName] = useState('');
@@ -8,6 +9,7 @@ const Form = ({ onDeploySuccess }) => {
   const [image, setImage] = useState('nginx:latest');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,12 +30,8 @@ const Form = ({ onDeploySuccess }) => {
         image: image.trim(),
       });
 
-      // Show success notification
-      const notification = document.createElement('div');
-      notification.className = 'toast-notification success';
-      notification.textContent = '✅ Deployment started successfully!';
-      document.body.appendChild(notification);
-      setTimeout(() => notification.remove(), 3000);
+      // Show success toast
+      toast.success('✅ Deployment started successfully!');
 
       // Reset form
       setClientName('');
@@ -45,7 +43,9 @@ const Form = ({ onDeploySuccess }) => {
       
     } catch (err) {
       console.error(err);
-      setError(err.response?.data?.error || 'Failed to create deployment');
+      const msg = err.response?.data?.error || 'Failed to create deployment';
+      setError(msg);
+      toast.error(msg);
       setTimeout(() => setError(''), 4000);
     } finally {
       setLoading(false);

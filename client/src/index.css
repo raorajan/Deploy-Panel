@@ -43,6 +43,13 @@
     --social-bg: rgba(47, 48, 58, 0.5);
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    --sidebar-bg: rgba(20, 20, 24, 0.72);
+    --sidebar-border: rgba(255, 255, 255, 0.06);
+    --card-bg: #1f2028;
+    --table-head-bg: #1b1c22;
+    --table-row-hover-bg: rgba(255, 255, 255, 0.02);
+    --muted: #9ca3af;
+    --muted-bg: rgba(255, 255, 255, 0.04);
   }
 
   #social .button-icon {

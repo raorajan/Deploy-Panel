@@ -1,8 +1,9 @@
 .form-container {
-  background: white;
+  background: var(--bg);
   border-radius: 12px;
   padding: 12px 12px 12px 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border);
 }
 
 .form-header {
@@ -12,13 +13,13 @@
 .form-header h2 {
   font-size: 16px;
   font-weight: 600;
-  color: #1a1a2e;
+  color: var(--text-h);
   margin-bottom: 2px;
 }
 
 .form-header p {
   font-size: 13px;
-  color: #666;
+  color: var(--text);
 }
 
 .form-group {
@@ -30,11 +31,11 @@
   margin-bottom: 2px;
   font-size: 12px;
   font-weight: 500;
-  color: #333;
+  color: var(--text);
 }
 
 .label-text {
-  color: #1a1a2e;
+  color: var(--text-h);
 }
 
 .required {
@@ -45,11 +46,14 @@
 .form-input {
   width: 100%;
   padding: 8px 10px;
-  border: 1px solid #e1e5e9;
+  border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 13px;
   transition: all 0.2s ease;
-  background: white;
+  background: var(--bg);
+  color: var(--text-h); /* ensure entered text is visible */
+  -webkit-text-fill-color: var(--text-h);
+  caret-color: var(--text-h);
 }
 
 .form-input:focus {
@@ -59,8 +63,28 @@
 }
 
 .form-input:disabled {
-  background: #f5f5f5;
+  background: var(--code-bg);
   cursor: not-allowed;
+}
+
+/* Placeholder color */
+.form-input::placeholder {
+  color: var(--text);
+  opacity: 1;
+}
+
+/* Ensure focused/active inputs keep visible text */
+.form-input:focus,
+.form-input:active {
+  color: var(--text-h);
+  -webkit-text-fill-color: var(--text-h);
+}
+
+/* Autofill fixes for Chrome/Safari */
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--bg) inset;
+  -webkit-text-fill-color: var(--text-h);
 }
 
 .quick-buttons {
@@ -157,31 +181,4 @@
 
 .info-box span { font-size: 16px; }
 
-.info-box p { font-size: 11px; color: #666; margin-top: 4px; }
-
-.toast-notification {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 12px 20px;
-  border-radius: 10px;
-  color: white;
-  font-size: 14px;
-  z-index: 1000;
-  animation: slideIn 0.3s ease;
-}
-
-.toast-notification.success {
-  background: #10b981;
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
+info-box p { font-size: 11px; color: #666; margin-top: 4px; }
