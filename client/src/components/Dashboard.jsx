@@ -1,17 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Dashboard.css';
+import DeploymentModal from './DeploymentModal';
 
 const Dashboard = () => {
   const [deployments, setDeployments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('All');
   const [lastUpdated, setLastUpdated] = useState(new Date());
+  const [selectedId, setSelectedId] = useState(null);
+  const [selectedInitial, setSelectedInitial] = useState(null);
 
   const fetchDeployments = async () => {
     try {
       const response = await axios.get('http://localhost:5000/api/deployments');
-      setDeployments(Array.isArray(response.data) ? response.data : []);
+      // API returns { success: true, data: [...], pagination: {...} }
+      const body = response.data;
+      const items = Array.isArray(body)
+        ? body
+        : Array.isArray(body?.data)
+        ? body.data
+        : [];
+      setDeployments(items);
       setLastUpdated(new Date());
     } catch (error) {
       console.error('Failed to fetch deployments:', error);
@@ -47,6 +57,16 @@ const Dashboard = () => {
   const filteredDeployments = filter === 'All' 
     ? deployments 
     : deployments.filter(d => d.status === filter);
+
+  const openModal = (id, initial) => {
+    setSelectedId(id)
+    setSelectedInitial(initial || null)
+  }
+
+  const closeModal = () => {
+    setSelectedId(null)
+    setSelectedInitial(null)
+  }
 
   return (
     <div className="dashboard">
@@ -158,7 +178,7 @@ const Dashboard = () => {
                     </td>
                     <td>{new Date(deployment.createdAt).toLocaleString()}</td>
                     <td>
-                      <button className="action-btn view">View</button>
+                      <button className="action-btn view" onClick={() => openModal(deployment._id || deployment.id, deployment)}>View</button>
                     </td>
                   </tr>
                 );
@@ -166,6 +186,17 @@ const Dashboard = () => {
             </tbody>
           </table>
         </div>
+      )}
+      {selectedId && (
+        <DeploymentModal
+          id={selectedId}
+          initial={selectedInitial}
+          onClose={closeModal}
+          onDeleted={() => {
+            closeModal()
+            fetchDeployments()
+          }}
+        />
       )}
     </div>
   );

@@ -15,6 +15,12 @@
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
+  /* Status card backgrounds (light mode) */
+  --status-pending-bg: #fffbeb;
+  --status-processing-bg: #eff6ff;
+  --status-completed-bg: #f0fdf4;
+  --status-failed-bg: #fef2f2;
+
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color-scheme: light dark;
@@ -50,6 +56,11 @@
     --table-row-hover-bg: rgba(255, 255, 255, 0.02);
     --muted: #9ca3af;
     --muted-bg: rgba(255, 255, 255, 0.04);
+      /* Status card backgrounds (dark mode) */
+      --status-pending-bg: rgba(245, 158, 11, 0.12);
+      --status-processing-bg: rgba(59, 130, 246, 0.08);
+      --status-completed-bg: rgba(16, 185, 129, 0.08);
+      --status-failed-bg: rgba(239, 68, 68, 0.08);
   }
 
   #social .button-icon {

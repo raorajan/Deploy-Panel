@@ -1,0 +1,57 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.modal {
+  width: min(980px, 100%);
+  max-height: 95vh;
+  overflow: auto;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+
+.modal-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.modal-title { font-size: 16px; font-weight: 600; color: var(--text-h); }
+.modal-close { background: transparent; border: none; font-size: 20px; cursor: pointer; color: var(--text-h); }
+
+.summary-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:12px; margin-bottom:12px; }
+.mono { font-family: var(--mono); font-size: 12px; background: var(--code-bg); padding:6px; border-radius:6px; display:inline-block; }
+
+.raw-json pre { background: var(--code-bg); padding:12px; border-radius:8px; overflow:auto; max-height: 40vh; }
+
+.modal-footer { display:flex; justify-content:flex-end; margin-top:12px; }
+.modal-actions { display:flex; gap:8px; }
+
+.modal-loading { padding: 20px; color: var(--muted); }
+
+/* Action button variants */
+.action-btn { padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border); background: transparent; cursor: pointer; color: var(--text); }
+.action-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.action-btn.delete { background: linear-gradient(90deg,#ef4444,#dc2626); color: white; border-color: transparent; }
+
+/* Responsive adjustments */
+@media (max-width: 720px) {
+  .modal { width: calc(100% - 32px); padding: 12px; border-radius: 8px; }
+  .summary-grid { grid-template-columns: 1fr; }
+  .raw-json pre { max-height: 30vh; }
+}

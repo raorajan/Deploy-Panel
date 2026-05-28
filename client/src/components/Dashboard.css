@@ -36,10 +36,10 @@
 
 .stat-card.total { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
 .stat-card.total .stat-value, .stat-card.total .stat-label { color: white; }
-.stat-card.pending { background: #fffbeb; }
-.stat-card.processing { background: #eff6ff; }
-.stat-card.completed { background: #f0fdf4; }
-.stat-card.failed { background: #fef2f2; }
+.stat-card.pending { background: var(--status-pending-bg); }
+.stat-card.processing { background: var(--status-processing-bg); }
+.stat-card.completed { background: var(--status-completed-bg); }
+.stat-card.failed { background: var(--status-failed-bg); }
 
 /* Filter Bar */
 .filter-bar {
