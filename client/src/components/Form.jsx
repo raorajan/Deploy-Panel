@@ -24,7 +24,8 @@ const Form = ({ onDeploySuccess }) => {
     setError('');
 
     try {
-      await axios.post('https://deploy-panel.onrender.com/api/deploy', {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      await axios.post(`${apiUrl}/api/deploy`, {
         clientName: clientName.trim(),
         domain: domain.trim().toLowerCase(),
         image: image.trim(),
