@@ -13,7 +13,7 @@ export default function DeploymentModal({ id, onClose, onDeleted, initial }) {
     const fetchDetails = async () => {
       setLoading(true)
       try {
-        const res = await axios.get(`http://localhost:5000/api/deployments/${id}`)
+        const res = await axios.get(`https://deploy-panel.onrender.com/api/deployments/${id}`)
         const data = res.data?.data || res.data
         setDeployment(data)
       } catch (err) {
@@ -32,7 +32,7 @@ export default function DeploymentModal({ id, onClose, onDeleted, initial }) {
     if (!id) return
     try {
       setDeleting(true)
-      await axios.delete(`http://localhost:5000/api/deployments/${id}`)
+      await axios.delete(`https://deploy-panel.onrender.com/api/deployments/${id}`)
       toast.success('Deployment deleted')
       if (onDeleted) onDeleted()
       onClose()

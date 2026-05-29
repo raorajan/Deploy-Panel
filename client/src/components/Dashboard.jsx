@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   const fetchDeployments = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/deployments');
+      const response = await axios.get('https://deploy-panel.onrender.com/api/deployments');
       // API returns { success: true, data: [...], pagination: {...} }
       const body = response.data;
       const items = Array.isArray(body)

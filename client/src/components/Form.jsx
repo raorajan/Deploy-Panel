@@ -24,7 +24,7 @@ const Form = ({ onDeploySuccess }) => {
     setError('');
 
     try {
-      await axios.post('http://localhost:5000/api/deploy', {
+      await axios.post('https://deploy-panel.onrender.com/api/deploy', {
         clientName: clientName.trim(),
         domain: domain.trim().toLowerCase(),
         image: image.trim(),
